@@ -1,0 +1,30 @@
+% tartan: A package to typeset Scottish Country Dance ball programs
+%
+% Copyright 2017 Jonathan Lovelace
+% 
+% This file may be distributed and/or modified under the conditions of the
+% LaTeX Project Public License, either version 1.3c of this license or (at your
+% option) any later version. The latest version of this license is in:
+%
+% http://www.latex-project.org/lppl.txt
+%
+% and version 1.3c or later is part of all ditributions of LaTeX version
+% 2008/05/04 or later.
+%
+% Maintainer: Jonathan Lovelace
+% Website:    https://shinecycle.wordpress.com
+% Contact:    kingjon3377@gmail.com
+%
+% This work consists of this file, tartan.tex, and the sample document, example.tex.
+
+\usepackage{xstring}
+
+% Add a dance to the program. The parameters are as follows:
+% 1. The title or name of the dance.
+% 2. The source of the dance.
+% 3. The tempo of the dance: Jig, Reel, Strathspey, or Medley.
+% 4. The length of the dance: RxB, where R is the number of times through the
+%    dance and B is the length of each round in bars of music.
+% 5. The formation in which the dance is danced: "2C (4C set)", "Sq. Set", "3C set", etc.
+% TODO: Add to a "list of dances" that will be handled like a table of contents.
+\newcommand{\scdance}[5]{\par \noindent \textbf{\large \uppercase{#1}\hfill(\StrLeft{#3}{1}#4) #5}\\*}
