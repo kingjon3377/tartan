@@ -18,6 +18,7 @@
 % This work consists of this file, tartan.tex, and the sample document, example.tex.
 
 \usepackage{xstring}
+\usepackage{etoolbox}
 
 % Add a dance to the program. The parameters are as follows:
 % 1. The title or name of the dance.
@@ -27,4 +28,5 @@
 %    dance and B is the length of each round in bars of music.
 % 5. The formation in which the dance is danced: "2C (4C set)", "Sq. Set", "3C set", etc.
 % TODO: Add to a "list of dances" that will be handled like a table of contents.
-\newcommand{\scdance}[5]{\par \noindent \textbf{\large \uppercase{#1}\hfill(\StrLeft{#3}{1}#4) #5}\\*}
+% TODO: Allow user to control whether source is printed with the dance directions.
+\newcommand{\scdance}[5]{\par \noindent \textbf{\large \uppercase{#1}\hfill(\StrLeft{#3}{1}#4) #5}\\*\ifstrempty{#2}{\relax}{\textit{#2}\\*}}
