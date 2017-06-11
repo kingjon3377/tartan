@@ -33,6 +33,7 @@
 % TODO: Add to a "list of dances" that will be handled like a table of contents.
 % TODO: Allow user to control whether source is printed with the dance directions.
 % TODO: Provide an easier way to read dance directions from file
+% TODO: allow a dance to be split onto multiple pages
 \newenvironment{scdance}[5]{\par \noindent \textbf{\large \uppercase{#1}\hfill(\StrLeft{#3}{1}#4) #5}\\*\ifstrempty{#2}{\relax}{\textit{#2}\\*}\tabularx{\linewidth}{ lX }}{\endtabularx}
 
 % Add a (dance) figure to the current dance. It takes the bar(s) this line of
