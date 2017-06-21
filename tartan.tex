@@ -59,3 +59,9 @@
 % code, results in a "Missing \endgroup inserted." error.
 \newcommand{\namedfigure}[1]{& \begin{tabularx}{\linewidth}{ lX } \smaller #1 \larger \end{tabularx} \tabularnewline}
 %\newenvironment{namedfigure}{& \tabularx{\linewidth}{ lX }\smaller}{\larger \endtabularx \tabularnewline}
+
+% Add a break or intermission to the list of dances. It will *not* be printed
+% between the dances' directions, but only in the table of contents. It takes
+% what to call the intermission as its sole argument (in *square* brackets);
+% this can be omitted, in which case it defaults to "Intermission".
+\newcommand{\intermission}[1][Intermission]{\addtocontents{dances}{\protect\contentsline{dances}{\hfill \textbf{#1}}{}}}
