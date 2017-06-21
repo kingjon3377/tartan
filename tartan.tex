@@ -22,6 +22,15 @@
 \usepackage{makecell}
 \usepackage{tabularx}
 \usepackage{relsize}
+\usepackage{tocloft}
+
+% This is the boilerplate to set up the list of dances/table of contents.
+% It causes a \listofdances command to be created, which will typeset the table
+% of contents.
+% You'll want to put \clearpage (or \cleardoublepage) before and after \listofdances.
+% TODO: Fix the unwanted hard space at the right of each contents line
+\newlistof{dances}{dances}{\relax}
+\cftpagenumbersoff{dances}
 
 % Add a dance to the program. The parameters to \begin{scdance} are as follows:
 % 1. The title or name of the dance.
@@ -34,7 +43,7 @@
 % TODO: Allow user to control whether source is printed with the dance directions.
 % TODO: Provide an easier way to read dance directions from file
 % TODO: allow a dance to be split onto multiple pages
-\newenvironment{scdance}[5]{\par \noindent \textbf{\large \uppercase{#1}\hfill(\StrLeft{#3}{1}#4) #5}\\*\ifstrempty{#2}{\relax}{\textit{#2}\\*}\tabularx{\linewidth}{ lX }}{\endtabularx}
+\newenvironment{scdance}[5]{\par \noindent \refstepcounter{dances}\textbf{\large \uppercase{#1}\addcontentsline{dances}{dances}{\protect\numberline{\thedances}\textbf{#1}\protect\hfill#3\ifstrempty{#2}{\relax}{, #2}}\hfill(\StrLeft{#3}{1}#4) #5}\\*\ifstrempty{#2}{\relax}{\textit{#2}\\*}\tabularx{\linewidth}{ lX }}{\endtabularx}
 
 % Add a (dance) figure to the current dance. It takes the bar(s) this line of
 % the directions describes as an optional parameter, and the movement as the
