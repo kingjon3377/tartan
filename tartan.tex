@@ -50,7 +50,7 @@
 % TODO: Allow user to control whether source is printed with the dance directions.
 % TODO: Provide an easier way to read dance directions from file
 % TODO: allow a dance to be split onto multiple pages
-\NewEnviron{scdance}[5]{\par \noindent \refstepcounter{dances}\textbf{\large \uppercase{#1}\addcontentsline{dances}{dances}{\protect\numberline{\thedances}\textbf{#1}\protect\hfill#3\ifstrempty{#2}{\relax}{, #2}}\hfill(\StrLeft{#3}{1}#4) #5}\\*\ifstrempty{#2}{\relax}{\textit{#2}}\begin{longtabu} { lX } \BODY \end{longtabu}}
+\NewEnviron{scdance}[5]{\par \noindent \refstepcounter{dances}\textbf{\large \uppercase{#1}\addcontentsline{dances}{dances}{\protect\numberline{\thedances}\textbf{#1}\protect\hfill#3\ifstrempty{#2}{\relax}{, #2}}\hfill(\StrLeft{#3}{1}#4) #5}\ifstrempty{#2}{\relax}{\\*\textit{#2}}\begin{longtabu} { lX } \BODY \end{longtabu}}
 %\newenvironment{scdance}[5]{\par \noindent \refstepcounter{dances}\textbf{\large \uppercase{#1}\addcontentsline{dances}{dances}{\protect\numberline{\thedances}\textbf{#1}\protect\hfill#3\ifstrempty{#2}{\relax}{, #2}}\hfill(\StrLeft{#3}{1}#4) #5}\\*\ifstrempty{#2}{\relax}{\textit{#2}\\*}\tabularx{\linewidth}{ lX }}{\endtabularx}
 
 % Add a (dance) figure to the current dance. It takes the bar(s) this line of
