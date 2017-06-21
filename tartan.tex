@@ -20,9 +20,12 @@
 \usepackage{xstring}
 \usepackage{etoolbox}
 \usepackage{makecell}
-\usepackage{tabularx}
 \usepackage{relsize}
 \usepackage{tocloft}
+\usepackage{environ}
+
+\usepackage{longtable}
+\usepackage{tabu}
 
 % This is the boilerplate to set up the list of dances/table of contents.
 % It causes a \listofdances command to be created, which will typeset the table
@@ -43,7 +46,8 @@
 % TODO: Allow user to control whether source is printed with the dance directions.
 % TODO: Provide an easier way to read dance directions from file
 % TODO: allow a dance to be split onto multiple pages
-\newenvironment{scdance}[5]{\par \noindent \refstepcounter{dances}\textbf{\large \uppercase{#1}\addcontentsline{dances}{dances}{\protect\numberline{\thedances}\textbf{#1}\protect\hfill#3\ifstrempty{#2}{\relax}{, #2}}\hfill(\StrLeft{#3}{1}#4) #5}\\*\ifstrempty{#2}{\relax}{\textit{#2}\\*}\tabularx{\linewidth}{ lX }}{\endtabularx}
+\NewEnviron{scdance}[5]{\par \noindent \refstepcounter{dances}\textbf{\large \uppercase{#1}\addcontentsline{dances}{dances}{\protect\numberline{\thedances}\textbf{#1}\protect\hfill#3\ifstrempty{#2}{\relax}{, #2}}\hfill(\StrLeft{#3}{1}#4) #5}\\*\ifstrempty{#2}{\relax}{\textit{#2}}\begin{longtabu} { lX } \BODY \end{longtabu}}
+%\newenvironment{scdance}[5]{\par \noindent \refstepcounter{dances}\textbf{\large \uppercase{#1}\addcontentsline{dances}{dances}{\protect\numberline{\thedances}\textbf{#1}\protect\hfill#3\ifstrempty{#2}{\relax}{, #2}}\hfill(\StrLeft{#3}{1}#4) #5}\\*\ifstrempty{#2}{\relax}{\textit{#2}\\*}\tabularx{\linewidth}{ lX }}{\endtabularx}
 
 % Add a (dance) figure to the current dance. It takes the bar(s) this line of
 % the directions describes as an optional parameter, and the movement as the
@@ -57,11 +61,14 @@
 % nested inside itself if needed).
 % FIXME: Figure out why making this an environment, as in the commented-out
 % code, results in a "Missing \endgroup inserted." error.
-\newcommand{\namedfigure}[1]{& \begin{tabularx}{\linewidth}{ lX } \smaller #1 \larger \end{tabularx} \tabularnewline}
+% FIXME: Figure out why making this a 'longtabu' environment instead of 'tabu'
+% results in a "Forbidden control sequence found" error.
+\newcommand{\namedfigure}[1]{& \begin{tabu}{ l X } \smaller #1 \larger \end{tabu} \tabularnewline}
+%\newcommand{\namedfigure}[1]{& \restoretx\begin{tabularx}{\linewidth}{ lX } \smaller #1 \larger \end{tabularx} \unrestoretx\tabularnewline}
 %\newenvironment{namedfigure}{& \tabularx{\linewidth}{ lX }\smaller}{\larger \endtabularx \tabularnewline}
 
 % Add a break or intermission to the list of dances. It will *not* be printed
 % between the dances' directions, but only in the table of contents. It takes
 % what to call the intermission as its sole argument (in *square* brackets);
 % this can be omitted, in which case it defaults to "Intermission".
-\newcommand{\intermission}[1][Intermission]{\addtocontents{dances}{\protect\contentsline{dances}{\hfill \textbf{#1}}{}}}
+\newcommand{\intermission}[1][Intermission]{\addtocontents{dances}{\protect\contentsline{dances}{\hfill \textbf{#1}}{}}\relax}
