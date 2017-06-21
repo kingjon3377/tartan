@@ -27,6 +27,10 @@
 \usepackage{longtable}
 \usepackage{tabu}
 
+% By default LaTeX prints a page number on every page; we hereby turn that feature off.
+\pagestyle{empty}
+\addtocontents{dances}{\protect\thispagestyle{empty}}
+
 % This is the boilerplate to set up the list of dances/table of contents.
 % It causes a \listofdances command to be created, which will typeset the table
 % of contents.
