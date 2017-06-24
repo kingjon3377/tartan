@@ -47,10 +47,8 @@
 % 4. The length of the dance: RxB, where R is the number of times through the
 %    dance and B is the length of each round in bars of music.
 % 5. The formation in which the dance is danced: "2C (4C set)", "Sq. Set", "3C set", etc.
-% TODO: Add to a "list of dances" that will be handled like a table of contents.
 % TODO: Allow user to control whether source is printed with the dance directions.
 % TODO: Provide an easier way to read dance directions from file
-% TODO: allow a dance to be split onto multiple pages
 \NewEnviron{scdance}[5]{\par \noindent \refstepcounter{dances}\textbf{\large \uppercase{#1}\addcontentsline{dances}{dances}{\protect\numberline{\thedances}\textbf{#1}\protect\hfill#3\ifstrempty{#2}{\relax}{, #2}}\hfill(\StrLeft{#3}{1}#4) #5}\ifstrempty{#2}{\relax}{\\*\textit{#2}}\begin{longtabu} { lX } \BODY \end{longtabu}}
 %\newenvironment{scdance}[5]{\par \noindent \refstepcounter{dances}\textbf{\large \uppercase{#1}\addcontentsline{dances}{dances}{\protect\numberline{\thedances}\textbf{#1}\protect\hfill#3\ifstrempty{#2}{\relax}{, #2}}\hfill(\StrLeft{#3}{1}#4) #5}\\*\ifstrempty{#2}{\relax}{\textit{#2}\\*}\tabularx{\linewidth}{ lX }}{\endtabularx}
 
