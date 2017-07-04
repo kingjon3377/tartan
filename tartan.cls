@@ -81,3 +81,36 @@
 % what to call the intermission as its sole argument (in *square* brackets);
 % this can be omitted, in which case it defaults to "Intermission".
 \newcommand{\intermission}[1][Intermission]{\addtocontents{dances}{\protect\contentsline{dances}{\hfill \textbf{#1}}{}}\relax}
+
+% Since Auld Lang Syne is always sung at the end of our Balls, and usually
+% printed in the program if space permits, we provide a command to print that
+% text, to simplify the LaTeX of the individual program. Note that this will go
+% on its own page, adding page breaks before and (if there is another page)
+% after it. (However, I believe that specifying a page break before calling
+% this, using \clearpage, won't cause a double page break.)
+\newcommand{\auldlangsyne}{%
+\clearpage%
+\vspace*{\fill}%
+\settowidth{\versewidth}{And we'll tak' a right gude-willie waught,}
+\begin{verse}[\versewidth]
+\begin{altverse}
+Should auld acquaintance be forgot,\\
+And never brought to mind?\\
+Should auld acquaintance be forgot,\\
+And auld lang syne?\\
+\textit{For auld lang syne, my Jo,\\
+For auld lang syne,\\
+We'll tak' a cup o' kindness yet,\\
+For auld lang syne.}
+\end{altverse}
+
+\begin{altverse}
+And there's a hand, my trusty fiere!\\
+and gie's a hand o' thine!\\
+And we'll tak' a right gude-willie waught,\\
+for auld lang syne.\\
+\textit{For auld lang syne, etc.}
+\end{altverse}
+\vfill
+\end{verse}%
+}
