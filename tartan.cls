@@ -15,19 +15,22 @@
 % Website:    https://shinecycle.wordpress.com
 % Contact:    kingjon3377@gmail.com
 %
-% This work consists of this file, tartan.tex, and the sample document, example.tex.
+% This work consists of this file, tartan.cls, and the sample document, example.tex.
 
-\usepackage{xstring}
-\usepackage{etoolbox}
-\usepackage{makecell}
-\usepackage{relsize}
-\usepackage{tocloft}
-\usepackage{environ}
-\usepackage{parskip}
+\NeedsTeXFormat{LaTeX2e}[1995/12/01]
+\ProvidesClass{tartan}[2017/07/04 v0.9]
+\LoadClass{article}
+\RequirePackage{xstring}
+\RequirePackage{etoolbox}
+\RequirePackage{makecell}
+\RequirePackage{relsize}
+\RequirePackage{tocloft}
+\RequirePackage{environ}
+\RequirePackage{parskip}
 
-\usepackage{ltablex}
-\usepackage[paperwidth=5.5in,paperheight=4.5in]{geometry}
-\usepackage{etoolbox}
+\RequirePackage{ltablex}
+\RequirePackage[paperwidth=5.5in,paperheight=4.5in]{geometry}
+\RequirePackage{etoolbox}
 
 % By default LaTeX prints a page number on every page; we hereby turn that feature off.
 \pagestyle{empty}
