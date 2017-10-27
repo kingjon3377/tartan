@@ -31,7 +31,10 @@
 \RequirePackage{ltablex}
 \RequirePackage[paperwidth=5.5in,paperheight=4.5in]{geometry}
 \RequirePackage{etoolbox}
+
 \RequirePackage{verse}
+
+\RequirePackage{graphicx}
 
 % By default LaTeX prints a page number on every page; we hereby turn that feature off.
 \pagestyle{empty}
@@ -115,3 +118,13 @@ for auld lang syne.\\
 \vfill
 \end{verse}%
 }
+
+% Inserts an image. This image is always centered and is resized to mostly fill
+% the page horizontally and vertically (or as close as possible without
+% exceeding those dimensions or breaking its aspect ratio). The sole argument
+% is the filename of the image to insert, including its path relative to the
+% document (or any of the standard LaTeX paths), but *not* including its
+% extension. Only PNG, JPEG, and PDF format images are supported. (See standard
+% LaTeX documentation of the \includegraphics command for more details.)
+\newcommand\tartanimage[1]{\begin{center}\includegraphics[width=.9\textwidth,height=.9\textheight,keepaspectratio]{#1}\end{center}}
+
