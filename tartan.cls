@@ -31,6 +31,7 @@
 \RequirePackage{ltablex}
 \RequirePackage[paperwidth=5.5in,paperheight=4.5in]{geometry}
 \RequirePackage{etoolbox}
+\RequirePackage{suffix}
 
 \RequirePackage{verse}
 
@@ -128,3 +129,87 @@ for auld lang syne.\\
 % LaTeX documentation of the \includegraphics command for more details.)
 \newcommand\tartanimage[1]{\begin{center}\includegraphics[width=.9\textwidth,height=.9\textheight,keepaspectratio]{#1}\end{center}}
 
+\newcommand\@covergroupname{\relax}
+\newcommand\@titlegroupname{\relax}
+\newcommand\@covereventname{\relax}
+\newcommand\@titleeventname{\relax}
+\newcommand\@coverdate{\relax}
+\newcommand\@titledate{\relax}
+\newcommand\@coverhall{\relax}
+\newcommand\@titlehall{\relax}
+\newcommand\@halladdress{\relax}
+\newcommand\@balltimes{\relax}
+\newcommand\@musicians{\relax}
+
+% The \tartangroupname command (re)defines the name of the group for the cover and
+% title page; the starred variant (re)defines it for only the title page.
+\newcommand\tartangroupname[1]{\renewcommand{\@covergroupname}{#1}\renewcommand{\@titlegroupname}{#1}}
+\WithSuffix\newcommand\tartangroupname*[1]{\renewcommand{\@titlegroupname}{#1}}
+
+% The \tartanballname command (re)defines the name of the event for the cover
+% and title page; the starred variant (re)defines it for only the title page.
+\newcommand\tartanballname[1]{\renewcommand{\@covereventname}{#1}\renewcommand{\@titleeventname}{#1}}
+\WithSuffix\newcommand\tartanballname*[1]{\renewcommand{\@titleeventname}{#1}}
+
+% The \tartanballdate command (re)defines the date of the event for the cover
+% and title page; the starred variant (re)defines it for only the title page.
+\newcommand\tartanballdate[1]{\renewcommand{\@coverdate}{#1}\renewcommand{\@titledate}{#1}}
+\WithSuffix\newcommand\tartanballdate*[1]{\renewcommand{\@titledate}{#1}}
+
+% The \tartanhall command (re)defines the location of the event for the cover
+% and title page; the starred variant (re)defines it for only the title page.
+\newcommand\tartanhall[1]{\renewcommand{\@coverhall}{#1}\renewcommand{\@titlehall}{#1}}
+\WithSuffix\newcommand\tartanhall*[1]{\renewcommand{\@titlehall}{#1}}
+
+% The \tartanhalladdress command (re)defines the address of the location of the
+% event for the title page.
+\newcommand\tartanhalladdress[1]{\renewcommand{\@halladdress}{#1}}
+
+% The \tartantimes command (re)defines the time(s) associated with the event for the title page.
+\newcommand\tartantimes[1]{\renewcommand{\@balltimes}{#1}}
+
+% The \tartanmusicians command (re)defines the names of the musicians for the title page.
+\newcommand\tartanmusicians[1]{\renewcommand{\@musicians}{#1}}
+
+% The \tartancover command lays out the cover, without an image, with the group
+% and event name centered in large type at the top and the date and location of
+% the event in smaller type at the bottom of the page. Because this is expected
+% to be the first page of the document, we don't bother clearing the page (i.e.
+% starting a new page if the current one has any text on it) within it, and we
+% also leave starting a new page after it to the caller.
+\newcommand\tartancover{\begin{center}\Large\ifdefempty{\@covergroupname}{\relax}{\@covergroupname\\*}\@covereventname\\*\vspace*{\fill}\large\ifdefempty{\@coverdate}{\relax}{\@coverdate\ifdefempty{\@coverhall}{\relax}{\\*\@coverhall}}\normalsize\end{center}}
+
+% The \tartanimagecover takes the filename of an image (with path but without
+% extension, as in \tartanimage) and produces a cover with the name of the
+% group and event above the image and the date and location of the event below
+% it. It is essentially the same as \tartancover except taking the name of an
+% image to add in the middle. To keep the image from pushing the items below it
+% off the page, using a wide-but-narrow image is recommended.
+\newcommand\tartanimagecover[1]{\begin{center}\Large\ifdefempty{\@covergroupname}{\relax}{\@covergroupname\\*}\ifdefempty{\@covereventname}{\relax}{\@covereventname\\*}\vfill\includegraphics[keepaspectratio,height=.8\textheight,width=.9\textwidth]\vfill\large\ifdefempty{\@coverdate}{\relax}{\@coverdate\ifdefempty{\@coverhall}{\relax}{\\*\@coverhall}}\normalsize\end{center}}
+
+% The \maketartantitle command lays out the title page, including the name of
+% the group, the name of the event, the location, the address (in parentheses
+% and smaller type if specified), the specified times, and the names of the
+% musicians. As with \tartancover, it does not force a page break either before
+% or after the "title page."
+\newcommand\maketartantitle{%
+	\begin{center}%
+		{%
+			{%
+				\sffamily\large%
+				\ifdefempty{\@titlegroupname}{\relax}{%
+					\textbf{\@titlegroupname}\\*}%
+				\ifdefempty{\@titleeventname}{\relax}{%
+					\textbf{\@titleeventname}\\*}%
+				\ifdefempty{\@titlegroupname\@titleeventname}{\relax}{\vspace*{\parskip}}%
+				\ifdefempty{\@titlehall}{\relax}{\@titlehall\\*}%
+				\ifdefempty{\@halladdress}{\relax}%
+				{{\normalsize\@halladdress\\*}}%
+				\ifdefempty{\@titlehall\@halladdress}{\relax}{\\*}%
+				\ifdefempty{\@titledate}{\relax}{\@titledate\vspace*{\parskip}}%
+				\normalsize\ifdefempty{\@balltimes}{\relax}{%
+					\@balltimes\vspace*{\parskip}}%
+				\ifdefempty{\@musicians}{\relax}{Music by\\*\textbf{\@musicians}}%
+			}%
+		}%
+	\end{center}}

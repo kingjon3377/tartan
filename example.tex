@@ -1,26 +1,25 @@
 % Example file for the tartan package, q.v. for license information etc.
 
 \documentclass{tartan}
+\tartangroupname{Name of Group}
+\tartangroupname*{Full Name of Group}
+\tartanballname{Name of Ball}
+\tartanballname*{Alternate Name of Ball}
+\tartanballdate{Month Date, Year}
+\tartanballdate*{Day, Month Date, Year}
+\tartanhall{City of Ball}
+\tartanhall*{Name of Hall}
+\tartanhalladdress{Address of Hall}
+\tartantimes{Gather Time\\*Dinner Time\\*Dancing Time}
+\tartanmusicians{Musicians' Names}
 \begin{document}
+
+\tartancover
 
 % Title page
 
-\begin{center}
-\large \textbf{Name of Group\\*
-Name of Ball}
-
-Location of Ball\\*(Address of Location)
-
-Date of Ball
-
-Gather 6 p.m.\\*
-Dinner 6:30 p.m.\\*
-Dance 7:30 p.m.
-
-Music by\\*
-Names of Musicians
-\normalsize
-\end{center}
+\cleardoublepage
+\maketartantitle
 
 \clearpage
 \listofdances
