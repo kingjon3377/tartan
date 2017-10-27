@@ -31,6 +31,7 @@
 \RequirePackage{ltablex}
 \RequirePackage[paperwidth=5.5in,paperheight=4.5in]{geometry}
 \RequirePackage{etoolbox}
+\RequirePackage{verse}
 
 % By default LaTeX prints a page number on every page; we hereby turn that feature off.
 \pagestyle{empty}
