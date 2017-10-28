@@ -64,6 +64,7 @@
 % column, and if not make the row use up the remaining columns.
 \NewEnviron{scdance}[5]{\par \noindent \refstepcounter{dances}\textbf{\large \uppercase{#1}\addcontentsline{dances}{dances}{\protect\numberline{\thedances}\textbf{#1}\protect\hfill#3\ifstrempty{#2}{\relax}{, #2}}\hfill(\StrLeft{#3}{1}#4) #5}\ifstrempty{#2}{\relax}{\\*\textit{#2}}\begin{tabularx}{\linewidth} { llX } \BODY \end{tabularx}}
 
+%FIXME:A named figure indents *all subsequent* figures.
 \newbool{InNamedFigure}
 
 % Typeset a series of (dance) figures indented from the main directions, as in
