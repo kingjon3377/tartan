@@ -191,7 +191,7 @@ for auld lang syne.\\
 % it. It is essentially the same as \tartancover except taking the name of an
 % image to add in the middle. To keep the image from pushing the items below it
 % off the page, using a wide-but-narrow image is recommended.
-\newcommand\tartanimagecover[1]{\begin{center}\LARGE\ifdefempty{\@covergroupname}{\relax}{\@covergroupname\\*}\ifdefempty{\@covereventname}{\relax}{\@covereventname\\*}\vfill\includegraphics[keepaspectratio,height=.8\textheight,width=.9\textwidth]\vfill\Large\ifdefempty{\@coverdate}{\relax}{\@coverdate\ifdefempty{\@coverhall}{\relax}{\\*\@coverhall}}\normalsize\end{center}}
+\newcommand\tartanimagecover[1]{\begin{center}\LARGE\ifdefempty{\@covergroupname}{\relax}{\@covergroupname\\*}\ifdefempty{\@covereventname}{\relax}{\@covereventname\\*}\vfill\includegraphics[keepaspectratio,height=.8\textheight,width=.9\textwidth]{#1}\vfill\Large\ifdefempty{\@coverdate}{\relax}{\@coverdate\ifdefempty{\@coverhall}{\relax}{\\*\@coverhall}}\normalsize\end{center}}
 
 % The \maketartantitle command lays out the title page, including the name of
 % the group, the name of the event, the location, the address (in parentheses
