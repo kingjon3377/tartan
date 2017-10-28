@@ -129,17 +129,17 @@ for auld lang syne.\\
 % LaTeX documentation of the \includegraphics command for more details.)
 \newcommand\tartanimage[1]{\begin{center}\includegraphics[width=.9\textwidth,height=.9\textheight,keepaspectratio]{#1}\end{center}}
 
-\newcommand\@covergroupname{\relax}
-\newcommand\@titlegroupname{\relax}
-\newcommand\@covereventname{\relax}
-\newcommand\@titleeventname{\relax}
-\newcommand\@coverdate{\relax}
-\newcommand\@titledate{\relax}
-\newcommand\@coverhall{\relax}
-\newcommand\@titlehall{\relax}
-\newcommand\@halladdress{\relax}
-\newcommand\@balltimes{\relax}
-\newcommand\@musicians{\relax}
+\newcommand\@covergroupname{}
+\newcommand\@titlegroupname{}
+\newcommand\@covereventname{}
+\newcommand\@titleeventname{}
+\newcommand\@coverdate{}
+\newcommand\@titledate{}
+\newcommand\@coverhall{}
+\newcommand\@titlehall{}
+\newcommand\@halladdress{}
+\newcommand\@balltimes{}
+\newcommand\@musicians{}
 
 % The \tartangroupname command (re)defines the name of the group for the cover and
 % title page; the starred variant (re)defines it for only the title page.
@@ -177,7 +177,8 @@ for auld lang syne.\\
 % to be the first page of the document, we don't bother clearing the page (i.e.
 % starting a new page if the current one has any text on it) within it, and we
 % also leave starting a new page after it to the caller.
-\newcommand\tartancover{\begin{center}\Large\ifdefempty{\@covergroupname}{\relax}{\@covergroupname\\*}\@covereventname\\*\vspace*{\fill}\large\ifdefempty{\@coverdate}{\relax}{\@coverdate\ifdefempty{\@coverhall}{\relax}{\\*\@coverhall}}\normalsize\end{center}}
+% FIXME: Format this, and other such macros, on multiple lines
+\newcommand\tartancover{\begin{center}\LARGE\ifdefempty{\@covergroupname}{\relax}{\@covergroupname\\*}\ifdefempty{\@covereventname}{\relax}{\@covereventname\\*}\vspace*{\fill}\Large\ifdefempty{\@coverdate}{\relax}{\@coverdate\ifdefempty{\@coverhall}{\relax}{\\*}}\ifdefempty{\@coverhall}{\relax}{\@coverhall}\normalsize\end{center}}
 
 % The \tartanimagecover takes the filename of an image (with path but without
 % extension, as in \tartanimage) and produces a cover with the name of the
@@ -185,7 +186,7 @@ for auld lang syne.\\
 % it. It is essentially the same as \tartancover except taking the name of an
 % image to add in the middle. To keep the image from pushing the items below it
 % off the page, using a wide-but-narrow image is recommended.
-\newcommand\tartanimagecover[1]{\begin{center}\Large\ifdefempty{\@covergroupname}{\relax}{\@covergroupname\\*}\ifdefempty{\@covereventname}{\relax}{\@covereventname\\*}\vfill\includegraphics[keepaspectratio,height=.8\textheight,width=.9\textwidth]\vfill\large\ifdefempty{\@coverdate}{\relax}{\@coverdate\ifdefempty{\@coverhall}{\relax}{\\*\@coverhall}}\normalsize\end{center}}
+\newcommand\tartanimagecover[1]{\begin{center}\LARGE\ifdefempty{\@covergroupname}{\relax}{\@covergroupname\\*}\ifdefempty{\@covereventname}{\relax}{\@covereventname\\*}\vfill\includegraphics[keepaspectratio,height=.8\textheight,width=.9\textwidth]\vfill\Large\ifdefempty{\@coverdate}{\relax}{\@coverdate\ifdefempty{\@coverhall}{\relax}{\\*\@coverhall}}\normalsize\end{center}}
 
 % The \maketartantitle command lays out the title page, including the name of
 % the group, the name of the event, the location, the address (in parentheses
@@ -196,20 +197,19 @@ for auld lang syne.\\
 	\begin{center}%
 		{%
 			{%
-				\sffamily\large%
+				\sffamily\Large%
 				\ifdefempty{\@titlegroupname}{\relax}{%
 					\textbf{\@titlegroupname}\\*}%
 				\ifdefempty{\@titleeventname}{\relax}{%
 					\textbf{\@titleeventname}\\*}%
-				\ifdefempty{\@titlegroupname\@titleeventname}{\relax}{\vspace*{\parskip}}%
-				\ifdefempty{\@titlehall}{\relax}{\@titlehall\\*}%
+				\ifdefempty{\@titlegroupname}{\ifdefempty{\@titleeventname}{\relax}{\vskip \parskip}}{\vfill}%
+				\ifdefempty{\@titlehall}{\relax}{\@titlehall\ifdefempty{\@halladdress}{\vfill}{\\*}}%
 				\ifdefempty{\@halladdress}{\relax}%
-				{{\normalsize\@halladdress\\*}}%
-				\ifdefempty{\@titlehall\@halladdress}{\relax}{\\*}%
-				\ifdefempty{\@titledate}{\relax}{\@titledate\vspace*{\parskip}}%
-				\normalsize\ifdefempty{\@balltimes}{\relax}{%
-					\@balltimes\vspace*{\parskip}}%
-				\ifdefempty{\@musicians}{\relax}{Music by\\*\textbf{\@musicians}}%
+					{{\large(\@halladdress)}\vfill}%
+				\ifdefempty{\@titledate}{\relax}{\@titledate\\*\vspace*{\fill}}%
+				\large\ifdefempty{\@balltimes}{\relax}{%
+					\@balltimes\\*\vspace*{\fill}}%
+				\ifdefempty{\@musicians}{\relax}{{Music by\\*\textbf{\@musicians}}}%
 			}%
 		}%
 	\end{center}}
