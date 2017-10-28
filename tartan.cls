@@ -83,7 +83,7 @@
 % the directions describes as an optional parameter, and the movement as the
 % required parameter. Should only be used inside an scdance environment (though
 % it can be used inside a namedfigure environment).
-\newcommand{\scfigure}[2][\relax]{\ifbool{InNamedFigure}{& #1 & #2}{#1 & \multicolumn2{l}{#2}} \tabularnewline}
+\newcommand{\scfigure}[2][\relax]{\ifbool{InNamedFigure}{& #1 & #2}{#1 & \multicolumn{2}{l}{#2}} \tabularnewline}
 
 % Add a break or intermission to the list of dances. It will *not* be printed
 % between the dances' directions, but only in the table of contents. It takes
