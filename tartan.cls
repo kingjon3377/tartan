@@ -36,7 +36,7 @@
 \RequirePackage{verse}
 
 \RequirePackage{graphicx}
-\RequirePackage{textcomp}
+\RequirePackage{nicefrac}
 
 % By default LaTeX prints a page number on every page; we hereby turn that feature off.
 \pagestyle{empty}
