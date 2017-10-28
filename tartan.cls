@@ -118,6 +118,7 @@ for auld lang syne.\\
 \end{altverse}
 \vfill
 \end{verse}%
+\nopagebreak{\raggedleft\small Robert Burns\hspace*{5em}\par}
 }
 
 % Inserts an image. This image is always centered and is resized to mostly fill
