@@ -67,8 +67,7 @@
 % column, and if not make the row use up the remaining columns.
 \NewEnviron{scdance}[5]{\par \noindent \refstepcounter{dances}\textbf{\large \uppercase{#1}\addcontentsline{dances}{dances}{\protect\numberline{\thedances}\textbf{#1}\protect\hfill#3\ifstrempty{#2}{\relax}{, #2}}\hfill(\StrLeft{#3}{1}#4) #5}\ifstrempty{#2}{\relax}{\\*\textit{#2}}\begin{tabularx}{\linewidth} { llX } \BODY \end{tabularx}}
 
-%FIXME:A named figure indents *all subsequent* figures.
-\newbool{InNamedFigure}
+\newcounter{NamedFigureDepth}
 
 % Typeset a series of (dance) figures indented from the main directions, as in
 % the case of a complicated named figure (e.g. the Targe) or a meanwhile
@@ -76,14 +75,14 @@
 % to the best implementation I could find or come up with that worked at all
 % and allowed page breaks to fall in the middle of a named figure, nesting it
 % inside itself has no effect.
-\newcommand{\namedfigure}[1]{\global\booltrue{InNamedFigure} #1 \global\boolfalse{InNamedFigure}}
-%\newenvironment{namedfigure}{\booltrue{InNamedFigure}}{\boolfalse{InNamedFigure}}
+\newcommand{\namedfigure}[1]{\addtocounter{NamedFigureDepth}{1} #1 \addtocounter{NamedFigureDepth}{-1}}
+%\newenvironment{namedfigure}{\addtocounter{NamedFigureDepth}{1}}{\addtocounter{NamedFigureDepth}{-1}}
 
 % Add a (dance) figure to the current dance. It takes the bar(s) this line of
 % the directions describes as an optional parameter, and the movement as the
 % required parameter. Should only be used inside an scdance environment (though
 % it can be used inside a namedfigure environment).
-\newcommand{\scfigure}[2][\relax]{\ifbool{InNamedFigure}{& #1 & #2}{#1 & \multicolumn{2}{p{\linewidth}}{#2}} \tabularnewline}
+\newcommand{\scfigure}[2][\relax]{\ifthenelse{\value{NamedFigureDepth}>0}{& #1 & #2}{#1 & \multicolumn{2}{p{\linewidth}}{#2}} \tabularnewline}
 
 % Add a break or intermission to the list of dances. It will *not* be printed
 % between the dances' directions, but only in the table of contents. It takes
