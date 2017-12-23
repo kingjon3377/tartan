@@ -221,4 +221,4 @@ for auld lang syne.\\
 % The \cleartoverso command starts a new page, inserting an additional blank
 % page before it if necessary to put subsequent content on a left-hand (or top,
 % in the way programs are printed in our group) page.
-\newcommand{\cleartoverso}{\clearpage\ifodd\hbox{}\newpage\fi}
+\newcommand{\cleartoverso}{\clearpage\ifodd\c@page\hbox{}\newpage\fi}
