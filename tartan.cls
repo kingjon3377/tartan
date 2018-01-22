@@ -93,13 +93,19 @@
 % the directions describes as an optional parameter, and the movement as the
 % required parameter. Should only be used inside an scdance environment (though
 % it can be used inside a namedfigure environment).
-\newcommand{\scfigure}[2][\relax]{\ifthenelse{\value{NamedFigureDepth}>0}{& #1 & #2\tabularnewline\nopagebreak[3]}{#1 & \multicolumn{2}{p{\linewidth}}{#2}\tabularnewline}}
+\newcommand{\scfigure}[2][\relax]{%
+	\ifthenelse{\value{NamedFigureDepth}>0}{%
+		& #1 & #2\tabularnewline\nopagebreak[3]%
+	}{%
+		#1 & \multicolumn{2}{p{\linewidth}}{#2}\tabularnewline%
+	}}
 
 % Add a break or intermission to the list of dances. It will *not* be printed
 % between the dances' directions, but only in the table of contents. It takes
 % what to call the intermission as its sole argument (in *square* brackets);
 % this can be omitted, in which case it defaults to "Intermission".
-\newcommand{\intermission}[1][Intermission]{\addtocontents{dances}{\protect\contentsline{dances}{\hfill \textbf{#1}}{}}\relax}
+\newcommand{\intermission}[1][Intermission]{%
+	\addtocontents{dances}{\protect\contentsline{dances}{\hfill \textbf{#1}}{}}\relax}
 
 % Since Auld Lang Syne is always sung at the end of our Balls, and usually
 % printed in the program if space permits, we provide a command to print that
@@ -142,7 +148,10 @@ for auld lang syne.\\
 % document (or any of the standard LaTeX paths), but *not* including its
 % extension. Only PNG, JPEG, and PDF format images are supported. (See standard
 % LaTeX documentation of the \includegraphics command for more details.)
-\newcommand\tartanimage[1]{\begin{center}\includegraphics[width=.9\textwidth,height=.9\textheight,keepaspectratio]{#1}\end{center}}
+\newcommand\tartanimage[1]{%
+	\begin{center}%
+		\includegraphics[width=.9\textwidth,height=.9\textheight,keepaspectratio]{#1}%
+	\end{center}}
 
 \newcommand\@covergroupname{}
 \newcommand\@titlegroupname{}
@@ -192,8 +201,14 @@ for auld lang syne.\\
 % to be the first page of the document, we don't bother clearing the page (i.e.
 % starting a new page if the current one has any text on it) within it, and we
 % also leave starting a new page after it to the caller.
-% FIXME: Format this, and other such macros, on multiple lines
-\newcommand\tartancover{\begin{center}\LARGE\ifdefempty{\@covergroupname}{\relax}{\@covergroupname\\*}\ifdefempty{\@covereventname}{\relax}{\@covereventname\\*}\vspace*{\fill}\Large\ifdefempty{\@coverdate}{\relax}{\@coverdate\ifdefempty{\@coverhall}{\relax}{\\*}}\ifdefempty{\@coverhall}{\relax}{\@coverhall}\normalsize\end{center}}
+\newcommand\tartancover{%
+	\begin{center}%
+		\LARGE\ifdefempty{\@covergroupname}{\relax}{\@covergroupname\\*}%
+		\ifdefempty{\@covereventname}{\relax}{\@covereventname\\*}%
+		\vspace*{\fill}\Large%
+		\ifdefempty{\@coverdate}{\relax}{\@coverdate\ifdefempty{\@coverhall}{\relax}{\\*}}%
+		\ifdefempty{\@coverhall}{\relax}{\@coverhall}%
+	\normalsize\end{center}}
 
 % The \tartanimagecover takes the filename of an image (with path but without
 % extension, as in \tartanimage) and produces a cover with the name of the
