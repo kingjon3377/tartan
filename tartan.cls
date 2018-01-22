@@ -29,6 +29,7 @@
 \RequirePackage{tocloft}
 \RequirePackage{environ}
 \RequirePackage{parskip}
+\RequirePackage{needspace}
 
 \RequirePackage{ltablex}
 \RequirePackage[paperwidth=5.5in,paperheight=4.5in]{geometry}
@@ -65,7 +66,17 @@
 % approach suggested by https://tex.stackexchange.com/a/55866 ) whether we're
 % in a named-figure environment, and if so indent those rows of the table by a
 % column, and if not make the row use up the remaining columns.
-\NewEnviron{scdance}[5]{\par \noindent \refstepcounter{dances}\textbf{\large \uppercase{#1}\addcontentsline{dances}{dances}{\protect\numberline{\thedances}\textbf{#1}\protect\hfill#3\ifstrempty{#2}{\relax}{, #2}}\hfill(\StrLeft{#3}{1}#4) #5}\ifstrempty{#2}{\relax}{\\*\textit{#2}}\begin{tabularx}{\linewidth} { llX } \BODY \end{tabularx}}
+	\NewEnviron{scdance}[5]{\Needspace{4\baselineskip}\par\noindent\refstepcounter{dances}%
+	\textbf{\large \uppercase{#1}%
+		\addcontentsline{dances}{dances}{%
+			\protect\numberline{\thedances}\textbf{#1}\protect\hfill#3\ifstrempty{#2}{\relax}{, #2}%
+		}%
+		\nopagebreak[4]%
+		\hfill(\StrLeft{#3}{1}#4) #5\nopagebreak[4]%
+	}%
+	\nopagebreak[4]%
+	\ifstrempty{#2}{\relax}{\\*\textit{#2}\nopagebreak[4]}%
+	\nopagebreak[4]\begin{tabularx}{\linewidth}{llX} \nopagebreak[4]\BODY \end{tabularx}\pagebreak[2]}
 
 \newcounter{NamedFigureDepth}
 
@@ -82,7 +93,7 @@
 % the directions describes as an optional parameter, and the movement as the
 % required parameter. Should only be used inside an scdance environment (though
 % it can be used inside a namedfigure environment).
-\newcommand{\scfigure}[2][\relax]{\ifthenelse{\value{NamedFigureDepth}>0}{& #1 & #2}{#1 & \multicolumn{2}{p{\linewidth}}{#2}} \tabularnewline}
+\newcommand{\scfigure}[2][\relax]{\ifthenelse{\value{NamedFigureDepth}>0}{& #1 & #2\tabularnewline\nopagebreak[3]}{#1 & \multicolumn{2}{p{\linewidth}}{#2}\tabularnewline}}
 
 % Add a break or intermission to the list of dances. It will *not* be printed
 % between the dances' directions, but only in the table of contents. It takes
