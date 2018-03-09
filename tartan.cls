@@ -55,7 +55,7 @@
 
 % Add a dance to the program. The parameters to \begin{scdance} are as follows:
 % 1. The title or name of the dance.
-% 2. The source of the dance.
+% 2. The source of the dance. TODO: We want a brief form for the ToC and a fuller form for the briefing
 % 3. The tempo of the dance: Jig, Reel, Strathspey, or Medley.
 % 4. The length of the dance: RxB, where R is the number of times through the
 %    dance and B is the length of each round in bars of music.
