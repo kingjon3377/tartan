@@ -32,7 +32,7 @@
 \RequirePackage{needspace}
 
 \RequirePackage{ltablex}
-\RequirePackage[paperwidth=5.5in,paperheight=4.5in]{geometry}
+\RequirePackage[landscape,paperheight=5.5in,paperwidth=4.5in,top=.4in,bottom=.25in,left=.25in,right=.25in]{geometry}
 \RequirePackage{etoolbox}
 \RequirePackage{suffix}
 
@@ -76,7 +76,7 @@
 	}%
 	\nopagebreak[4]%
 	\ifstrempty{#2}{\relax}{\\*\textit{#2}\nopagebreak[4]}%
-	\nopagebreak[4]\begin{tabularx}{\linewidth}{llX} \nopagebreak[4]\BODY \end{tabularx}\pagebreak[2]}
+	\nopagebreak[4]\begin{tabularx}{.9\linewidth}{llX} \nopagebreak[4]\BODY \end{tabularx}\pagebreak[2]}
 
 \newcounter{NamedFigureDepth}
 
@@ -97,7 +97,7 @@
 	\ifthenelse{\value{NamedFigureDepth}>0}{%
 		& #1 & #2\tabularnewline\nopagebreak[3]%
 	}{%
-		#1 & \multicolumn{2}{p{\linewidth}}{#2}\tabularnewline%
+		#1 & \multicolumn{2}{p{.9\linewidth}}{#2}\tabularnewline%
 	}}
 
 % Add a break or intermission to the list of dances. It will *not* be printed
