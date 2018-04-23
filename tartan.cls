@@ -19,7 +19,7 @@
 
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
 \ProvidesClass{tartan}[2017/07/04 v0.9]
-\LoadClass{article}
+\LoadClass[twoside]{article}
 \RequirePackage{ucs}
 \RequirePackage[utf8x]{inputenc}
 \RequirePackage{xstring}
