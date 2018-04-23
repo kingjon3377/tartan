@@ -96,9 +96,9 @@
 % it can be used inside a namedfigure environment).
 \newcommand{\scfigure}[2][\relax]{%
 	\ifthenelse{\value{NamedFigureDepth}>0}{%
-		& #1 & #2\tabularnewline\nopagebreak[3]%
+		& {\small #1} & #2\tabularnewline\nopagebreak[3]%
 	}{%
-		#1 & \multicolumn{2}{p{.9\linewidth}}{#2}\tabularnewline\pagebreak[1]%
+		{\small #1} & \multicolumn{2}{p{.9\linewidth}}{#2}\tabularnewline\pagebreak[1]%
 	}}
 
 % Add a break or intermission to the list of dances. It will *not* be printed
