@@ -32,7 +32,7 @@
 \RequirePackage{needspace}
 
 \RequirePackage{ltablex}
-\RequirePackage[landscape,paperheight=5.5in,paperwidth=4.25in,top=.3in,bottom=.3in,left=.2in,right=.25in]{geometry}
+\RequirePackage[landscape,paperheight=5.5in,paperwidth=4.25in,top=.3in,bottom=.3in,left=.2in,right=.2in]{geometry}
 \RequirePackage{etoolbox}
 \RequirePackage{suffix}
 
