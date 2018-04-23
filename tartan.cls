@@ -67,7 +67,7 @@
 % approach suggested by https://tex.stackexchange.com/a/55866 ) whether we're
 % in a named-figure environment, and if so indent those rows of the table by a
 % column, and if not make the row use up the remaining columns.
-	\NewEnviron{scdance}[5]{\pagebreak[2]\Needspace{4\baselineskip}\par\noindent\refstepcounter{dances}%
+\NewEnviron{scdance}[5]{\pagebreak[2]\Needspace{4\baselineskip}\par\noindent\refstepcounter{dances}%
 	\textbf{\textsf{\large \uppercase{#1}%
 		\addcontentsline{dances}{dances}{%
 			\protect\numberline{\thedances}\textbf{#1}\protect\hfill#3\ifstrempty{#2}{\relax}{, #2}%
