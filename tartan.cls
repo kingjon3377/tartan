@@ -40,6 +40,7 @@
 
 \RequirePackage{graphicx}
 \RequirePackage{nicefrac}
+\raggedbottom
 
 % By default LaTeX prints a page number on every page; we hereby turn that feature off.
 \pagestyle{empty}
