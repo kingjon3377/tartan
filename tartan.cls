@@ -68,13 +68,13 @@
 % in a named-figure environment, and if so indent those rows of the table by a
 % column, and if not make the row use up the remaining columns.
 	\NewEnviron{scdance}[5]{\pagebreak[2]\Needspace{4\baselineskip}\par\noindent\refstepcounter{dances}%
-	\textbf{\large \uppercase{#1}%
+	\textbf{\textsf{\large \uppercase{#1}%
 		\addcontentsline{dances}{dances}{%
 			\protect\numberline{\thedances}\textbf{#1}\protect\hfill#3\ifstrempty{#2}{\relax}{, #2}%
 		}%
 		\nopagebreak[4]%
 		\hfill(\StrLeft{#3}{1}#4) #5\nopagebreak[4]%
-	}%
+	}}%
 	\nopagebreak[4]%
 	\ifstrempty{#2}{\relax}{\nopagebreak[4]\\*\nopagebreak[4]\textit{#2}\nopagebreak[4]}%
 	\nopagebreak[4]\begin{tabularx}{.9\linewidth}{llX} \nopagebreak[4]\BODY \end{tabularx}\pagebreak[2]}
