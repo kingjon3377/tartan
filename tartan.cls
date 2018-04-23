@@ -66,7 +66,7 @@
 % approach suggested by https://tex.stackexchange.com/a/55866 ) whether we're
 % in a named-figure environment, and if so indent those rows of the table by a
 % column, and if not make the row use up the remaining columns.
-	\NewEnviron{scdance}[5]{\Needspace{4\baselineskip}\par\noindent\refstepcounter{dances}%
+	\NewEnviron{scdance}[5]{\pagebreak[2]\Needspace{4\baselineskip}\par\noindent\refstepcounter{dances}%
 	\textbf{\large \uppercase{#1}%
 		\addcontentsline{dances}{dances}{%
 			\protect\numberline{\thedances}\textbf{#1}\protect\hfill#3\ifstrempty{#2}{\relax}{, #2}%
@@ -97,7 +97,7 @@
 	\ifthenelse{\value{NamedFigureDepth}>0}{%
 		& #1 & #2\tabularnewline\nopagebreak[3]%
 	}{%
-		#1 & \multicolumn{2}{p{.9\linewidth}}{#2}\tabularnewline%
+		#1 & \multicolumn{2}{p{.9\linewidth}}{#2}\tabularnewline\pagebreak[1]%
 	}}
 
 % Add a break or intermission to the list of dances. It will *not* be printed
