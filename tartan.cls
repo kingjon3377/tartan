@@ -8,7 +8,7 @@
 %
 % http://www.latex-project.org/lppl.txt
 %
-% and version 1.3c or later is part of all ditributions of LaTeX version
+% and version 1.3c or later is part of all distributions of LaTeX version
 % 2008/05/04 or later.
 %
 % Maintainer: Jonathan Lovelace
