@@ -41,6 +41,12 @@
 \RequirePackage{graphicx}
 \RequirePackage{nicefrac}
 \raggedbottom
+\RequirePackage{gentium}
+%\RequirePackage{lmodern}
+%\RequirePackage{newtxtext}
+%\RequirePackage{nimbusserif}
+%\RequirePackage{stix}
+%\RequirePackage{mathptmx}
 
 % By default LaTeX prints a page number on every page; we hereby turn that feature off.
 \pagestyle{empty}
