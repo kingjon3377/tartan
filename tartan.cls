@@ -83,7 +83,7 @@
 	}}%
 	\nopagebreak[4]%
 	\ifstrempty{#2}{\relax}{\nopagebreak[4]\\*\nopagebreak[4]{\small \textit{#2}}\nopagebreak[4]}%
-	\nopagebreak[4]\begin{tabularx}{\linewidth}{llX} \nopagebreak[4]\BODY \end{tabularx}\pagebreak[2]}
+	\nopagebreak[4]\vspace*{-.25\baselineskip}\nopagebreak[4]\begin{tabularx}{\linewidth}{llX} \nopagebreak[4]\BODY \end{tabularx}\pagebreak[2]}
 
 \newcounter{NamedFigureDepth}
 
