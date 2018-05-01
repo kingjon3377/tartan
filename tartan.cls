@@ -148,7 +148,8 @@ for auld lang syne.\\
 \nopagebreak{\raggedleft\small Robert Burns\hspace*{5em}\par}
 }
 
-% Inserts an image. This image is always centered and is resized to mostly fill
+% Inserts an image. This image is always centered, horizontally and vertically
+% in the remaining available space, and is resized to mostly fill
 % the page horizontally and vertically (or as close as possible without
 % exceeding those dimensions or breaking its aspect ratio). The sole argument
 % is the filename of the image to insert, including its path relative to the
@@ -156,9 +157,12 @@ for auld lang syne.\\
 % extension. Only PNG, JPEG, and PDF format images are supported. (See standard
 % LaTeX documentation of the \includegraphics command for more details.)
 \newcommand\tartanimage[1]{%
+	\vspace*{\fill}%
+	\vspace{-\baselineskip}%
 	\begin{center}%
 		\includegraphics[width=.9\textwidth,height=.9\textheight,keepaspectratio]{#1}%
-	\end{center}}
+	\end{center}%
+	\vspace{\fill}}
 
 \newcommand\@covergroupname{}
 \newcommand\@titlegroupname{}
