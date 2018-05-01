@@ -228,9 +228,9 @@ for auld lang syne.\\
 	\begin{center}%
 		\LARGE\ifdefempty{\@covergroupname}{\relax}{\@covergroupname\\*}%
 		\ifdefempty{\@covereventname}{\relax}{\@covereventname\\*}%
-		\vfill\includegraphics[keepaspectratio,height=.75\textheight,width=.9\textwidth]{#1}\vfill%
+		\includegraphics[keepaspectratio,height=.75\textheight,width=.9\textwidth]{#1}\\*%
 		\Large\ifdefempty{\@coverdate}{\relax}{\@coverdate\ifdefempty{\@coverhall}{\relax}{\\*}}%
-		\ifdefempty{\@coverhall}{\relax}{\@coverhall}%
+		\ifdefempty{\@coverhall}{\relax}{\@coverhall}\vfill%
 	\normalsize\end{center}}
 
 % The \maketartantitle command lays out the title page, including the name of
