@@ -1,6 +1,6 @@
 % tartan: A package to typeset Scottish Country Dance ball programs
 %
-% Copyright 2017 Jonathan Lovelace
+% Copyright 2017-2018 Jonathan Lovelace
 %
 % This file may be distributed and/or modified under the conditions of the
 % LaTeX Project Public License, either version 1.3c of this license or (at your
