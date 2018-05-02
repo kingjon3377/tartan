@@ -208,18 +208,18 @@ for auld lang syne.\\
 
 % The \tartancover command lays out the cover, without an image, with the group
 % and event name centered in large type at the top and the date and location of
-% the event in smaller type at the bottom of the page. Because this is expected
-% to be the first page of the document, we don't bother clearing the page (i.e.
-% starting a new page if the current one has any text on it) within it, and we
-% also leave starting a new page after it to the caller.
+% the event in smaller type at the bottom of the page.
 \newcommand\tartancover{%
+	\clearpage%
 	\begin{center}%
 		\LARGE\ifdefempty{\@covergroupname}{\relax}{\@covergroupname\\*}%
 		\ifdefempty{\@covereventname}{\relax}{\@covereventname\\*}%
 		\vspace*{\fill}\Large%
 		\ifdefempty{\@coverdate}{\relax}{\@coverdate\ifdefempty{\@coverhall}{\relax}{\\*}}%
 		\ifdefempty{\@coverhall}{\relax}{\@coverhall}%
-	\normalsize\end{center}}
+	\normalsize\end{center}%
+	\clearpage%
+}
 
 % The \tartanimagecover takes the filename of an image (with path but without
 % extension, as in \tartanimage) and produces a cover with the name of the
@@ -228,6 +228,7 @@ for auld lang syne.\\
 % image to add in the middle. To keep the image from pushing the items below it
 % off the page, using a wide-but-narrow image is recommended.
 \newcommand\tartanimagecover[1]{%
+	\clearpage%
 	\enlargethispage{3\baselineskip}%
 	\begin{center}%
 		\LARGE\ifdefempty{\@covergroupname}{\relax}{\@covergroupname\\*}%
@@ -235,14 +236,16 @@ for auld lang syne.\\
 		\includegraphics[keepaspectratio,height=.75\textheight,width=.9\textwidth]{#1}\\*%
 		\Large\ifdefempty{\@coverdate}{\relax}{\@coverdate\ifdefempty{\@coverhall}{\relax}{\\*}}%
 		\ifdefempty{\@coverhall}{\relax}{\@coverhall}\vfill%
-	\normalsize\end{center}}
+	\normalsize\end{center}%
+	\clearpage%
+}
 
 % The \maketartantitle command lays out the title page, including the name of
 % the group, the name of the event, the location, the address (in parentheses
 % and smaller type if specified), the specified times, and the names of the
-% musicians. As with \tartancover, it does not force a page break either before
-% or after the "title page."
+% musicians.
 \newcommand\maketartantitle{%
+	\clearpage%
 	\begin{center}%
 		{%
 			{%
@@ -261,7 +264,9 @@ for auld lang syne.\\
 				\ifdefempty{\@musicians}{\relax}{{Music by\\*\textbf{\@musicians}}}%
 			}%
 		}%
-	\end{center}}
+	\end{center}%
+	\clearpage%
+}
 
 % The \cleartoverso command starts a new page, inserting an additional blank
 % page before it if necessary to put subsequent content on a left-hand (or top,
