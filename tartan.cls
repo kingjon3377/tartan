@@ -233,7 +233,9 @@ for auld lang syne.\\
 	\begin{center}%
 		\LARGE\ifdefempty{\@covergroupname}{\relax}{\@covergroupname\\*}%
 		\ifdefempty{\@covereventname}{\relax}{\@covereventname\\*}%
+		\ifdefempty{\@covergroupname}{\ifdefempty{\@covereventname}{\relax}{\vspace{.5\baselineskip}}}{\vspace{.5\baselineskip}}%
 		\includegraphics[keepaspectratio,height=.75\textheight,width=.9\textwidth]{#1}\\*%
+		\ifdefempty{\@coverdate}{\ifdefempty{\@coverhall}{\relax}{\vspace{.5\baselineskip}}}{\vspace{.5\baselineskip}}%
 		\Large\ifdefempty{\@coverdate}{\relax}{\@coverdate\ifdefempty{\@coverhall}{\relax}{\\*}}%
 		\ifdefempty{\@coverhall}{\relax}{\@coverhall}\vfill%
 	\normalsize\end{center}%
