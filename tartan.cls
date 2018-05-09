@@ -102,10 +102,15 @@
 % it can be used inside a namedfigure environment).
 \newcommand{\scfigure}[2][\relax]{%
 	\ifthenelse{\value{NamedFigureDepth}>0}{%
-		& {#1} & #2\tabularnewline\nopagebreak[2]%
+		& {#1} & #2\tabularnewline%
 	}{%
-		{#1} & \multicolumn{2}{p{.9\linewidth}}{#2}\tabularnewline\nopagebreak[1]%
+		{#1} & \multicolumn{2}{p{.9\linewidth}}{#2}\tabularnewline%
 	}}
+
+% Intended for adaptations of dances to other set sizes, and other such
+% comments at the end of the dance, the \sccomment command typesets its argument
+% in smaller, italic, text across the full width of the table.
+\newcommand{\sccomment}[1]{\multicolumn{3}{l}{\textit{\small #1}}\tabularnewline\nopagebreak[2]}
 
 % Add a break or intermission to the list of dances. It will *not* be printed
 % between the dances' directions, but only in the table of contents. It takes
