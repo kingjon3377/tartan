@@ -112,7 +112,7 @@
 % what to call the intermission as its sole argument (in *square* brackets);
 % this can be omitted, in which case it defaults to "Intermission".
 \newcommand{\intermission}[1][Intermission]{%
-	\addtocontents{dances}{\protect\contentsline{dances}{\hfill \textbf{#1}}{}}\relax}
+	\addtocontents{dances}{\protect\contentsline{dances}{\hfill \textbf{#1}}{}{}}\relax}
 
 % Since Auld Lang Syne is always sung at the end of our Balls, and usually
 % printed in the program if space permits, we provide a command to print that
