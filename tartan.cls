@@ -236,6 +236,8 @@ for auld lang syne.\\
 	\clearpage%
 }
 
+\newlength{\covertextheight}
+
 % The \tartanimagecover takes the filename of an image (with path but without
 % extension, as in \tartanimage) and produces a cover with the name of the
 % group and event above the image and the date and location of the event below
@@ -244,16 +246,16 @@ for auld lang syne.\\
 % off the page, using a wide-but-narrow image is recommended.
 \newcommand\tartanimagecover[1]{%
 	\clearpage%
+	\settoheight{\covertextheight}{\hbox{\@tartancovertop\@tartancoverbottom}}%
 	\enlargethispage{3\baselineskip}%
 	\begin{center}%
-		\LARGE\ifdefempty{\@covergroupname}{\relax}{\@covergroupname\\*}%
-		\ifdefempty{\@covereventname}{\relax}{\@covereventname\\*}%
+		\@tartancovertop%
 		\ifdefempty{\@covergroupname}{\ifdefempty{\@covereventname}{\relax}{\vspace{.5\baselineskip}}}{\vspace{.5\baselineskip}}%
 		\includegraphics[keepaspectratio,height=.75\textheight,width=.9\textwidth]{#1}\\*%
 		\ifdefempty{\@coverdate}{\ifdefempty{\@coverhall}{\relax}{\vspace{.5\baselineskip}}}{\vspace{.5\baselineskip}}%
-		\Large\ifdefempty{\@coverdate}{\relax}{\@coverdate\ifdefempty{\@coverhall}{\relax}{\\*}}%
-		\ifdefempty{\@coverhall}{\relax}{\@coverhall}\vfill%
-	\normalsize\end{center}%
+		\@tartancoverbottom%
+		\vfill%
+	\end{center}%
 	\clearpage%
 }
 
