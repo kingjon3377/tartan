@@ -19,7 +19,9 @@
 
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
 \ProvidesClass{tartan}[2017/07/04 v0.9]
-\LoadClass[twoside]{article}
+%\LoadClass[twoside]{article} % Add 11pt or 12pt to increase font size
+%\LoadClass[11pt,twoside]{article} % Add 11pt or 12pt to increase font size
+\LoadClass[11pt,twoside]{article} % Add 11pt or 12pt to increase font size
 \RequirePackage{ucs}
 \RequirePackage[utf8x]{inputenc}
 \RequirePackage{xstring}
