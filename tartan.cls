@@ -213,18 +213,26 @@ for auld lang syne.\\
 % The \tartanmusicians command (re)defines the names of the musicians for the title page.
 \newcommand\tartanmusicians[1]{\renewcommand{\@musicians}{#1}}
 
+\newcommand\@tartancovertop{%
+	\LARGE\ifdefempty{\@covergroupname}{\relax}{\@covergroupname\\*}%
+	\ifdefempty{\@covereventname}{\relax}{\@covereventname\\*}%
+}
+
+\newcommand\@tartancoverbottom{%
+	\Large\ifdefempty{\@coverdate}{\relax}{\@coverdate\ifdefempty{\@coverhall}{\relax}{\\*}}%
+	\ifdefempty{\@coverhall}{\relax}{\@coverhall}\normalsize%
+}
+
 % The \tartancover command lays out the cover, without an image, with the group
 % and event name centered in large type at the top and the date and location of
 % the event in smaller type at the bottom of the page.
 \newcommand\tartancover{%
 	\clearpage%
 	\begin{center}%
-		\LARGE\ifdefempty{\@covergroupname}{\relax}{\@covergroupname\\*}%
-		\ifdefempty{\@covereventname}{\relax}{\@covereventname\\*}%
-		\vspace*{\fill}\Large%
-		\ifdefempty{\@coverdate}{\relax}{\@coverdate\ifdefempty{\@coverhall}{\relax}{\\*}}%
-		\ifdefempty{\@coverhall}{\relax}{\@coverhall}%
-	\normalsize\end{center}%
+		\@tartancovertop%
+		\vspace*{\fill}%
+		\@tartancoverbottom%
+	\end{center}%
 	\clearpage%
 }
 
